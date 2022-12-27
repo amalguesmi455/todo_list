@@ -18,17 +18,32 @@ pipeline {
                    
                    dockerImage = docker.build("amalguesmi/todo_list:latest")
                   
+                   env.WORKSPACE = pwd()
+
+                   sh 'virtualenv --python=python34 venv'
+                   sh 'source venv/bin/activate'
+
+                   sh 'pip install -r requirements.txt'
+
+                   env.DJANGO_SETTINGS_MODULE = "<appname>.settings.jenkins"
+
+    // Start the tests
+    stage ('Test'){
+    sh 'python34 manage.py test --keepdb'
+
+    }
+                  
                 }
              }
                     
           }   
-     /*    stage('login') {
+         stage('login') {
       steps {
       
         
         
       }
-    }*/
+    }
  
     
    stage('Push image') {
