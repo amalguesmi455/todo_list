@@ -12,7 +12,7 @@ pipeline {
     stage 'Checkout'
 
     // Get the code from a GitHub repository
-    git credentialsId: 'mycredentials', url: 'https://github.com/<user>/<project>/'
+    git credentialsId: 'mycredentials', url: 'https://github.com/amalguesmi455/todo_list.git'
 
     // Mark the code build 'stage'....
     stage 'Build'
