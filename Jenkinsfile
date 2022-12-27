@@ -5,14 +5,17 @@ def dockerimage
     dockerImage = ''
   }
 pipeline {
+
   agent any
-  stages {
-    stage('verify version') {
+
+      stages {
+         stage('verify version') {
       
-      steps {
-        sh 'python3 --version'
-            }
-   stage('Build image with docker') {
+             steps {
+              sh 'python3 --version'
+               }
+         }
+         stage('Build image with docker') {
              steps{
                 script{
                    
@@ -23,32 +26,26 @@ pipeline {
                     
           }   
          stage('login') {
-      steps {
+          steps {
       
-        sh 'python3 manage.py'
+           sh 'python3 manage.py'
         
-      }
-    }
- 
-    
-   stage('Push image') {
+           }
+         }
+         stage('Push image') {
             steps{
                 script{
-           
-         //           withDockerRegistry([credentialsId: "docker-hub", url:""]){
-           //         dockerImage.push()
-             withCredentials([usernamePassword( credentialsId: 'docker-hub', usernameVariable: 'amalguesmi', passwordVariable: '22651530mama')]) {
+                      withCredentials([usernamePassword( credentialsId: 'docker-hub', usernameVariable: 'amalguesmi', passwordVariable: '22651530mama')]) {
         
-            sh ' docker login -u amalguesmi -p 22651530mama  '
-                 // Push your image now
-            sh "docker push amalguesmi/todo_list:latest"
+                      sh ' docker login -u amalguesmi -p 22651530mama  '
+                      // Push your image now
+                      sh "docker push amalguesmi/todo_list:latest"
                 
-        }
-    }
-                    
-              }
-               } 
-                 }
+                     
+                }
+             }
+         } 
+      }
+    } 
 } 
-  }
-  }
+    
