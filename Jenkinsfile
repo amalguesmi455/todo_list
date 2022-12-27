@@ -1,19 +1,17 @@
 def dockerimage
  environment {
-    registry = "amalguesmi/todo_list"
+    registry = "amalguesmi/phpappauth"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
 pipeline {
   agent any
   stages {
-   
-     stage('version') {
+    stage('verify version') {
       steps {
         sh 'python3 --version'
-      }
-   
-     stage('Build image with docker') {
+    }
+   stage('Build image with docker') {
              steps{
                 script{
                    
@@ -22,32 +20,16 @@ pipeline {
                 }
              }
                     
-          }     
-        /* stage('login') {
+          }   
+         stage('login') {
       steps {
       
-        env.WORKSPACE = pwd()
-
-                   sh 'virtualenv --python=python34 venv'
-                   sh 'source venv/bin/activate'
-
-                   sh 'pip install -r requirements.txt'
-
-                   env.DJANGO_SETTINGS_MODULE = "<appname>.settings.jenkins"
+        sh 'python3 manage.py'
         
       }
-    }*/
+    }
  
     
-     // Start the tests
-      
-    }
-    stage('login') {
-      steps {
-        sh 'python3 'manage.py'
-      }
-    }
-   
    stage('Push image') {
             steps{
                 script{
