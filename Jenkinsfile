@@ -8,9 +8,10 @@ pipeline {
   agent any
   stages {
     stage('verify version') {
+      
       steps {
         sh 'python3 --version'
-    }
+            }
    stage('Build image with docker') {
              steps{
                 script{
@@ -38,7 +39,7 @@ pipeline {
            //         dockerImage.push()
              withCredentials([usernamePassword( credentialsId: 'docker-hub', usernameVariable: 'amalguesmi', passwordVariable: '22651530mama')]) {
         
-sh ' docker login -u amalguesmi -p 22651530mama  '
+            sh ' docker login -u amalguesmi -p 22651530mama  '
                  // Push your image now
             sh "docker push amalguesmi/todo_list:latest"
                 
@@ -48,4 +49,6 @@ sh ' docker login -u amalguesmi -p 22651530mama  '
               }
                } 
                  }
-               } 
+} 
+  }
+  }
