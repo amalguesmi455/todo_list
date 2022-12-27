@@ -12,7 +12,7 @@ pipeline {
          stage('verify version') {
       
              steps {
-              sh 'python3 --version'
+              sh 'python --version'
                }
          }
          stage('Build image with docker') {
@@ -28,7 +28,7 @@ pipeline {
          stage('login') {
           steps {
       
-           sh 'python3 manage.py'
+           sh 'python manage.py'
         
            }
          }
