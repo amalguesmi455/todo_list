@@ -8,16 +8,16 @@ pipeline {
   agent any
   stages {
    
-   stage('Build image with docker') {
+     stage('Build image with docker') {
              steps{
                 script{
                    
-                   dockerImage = docker.build("amalguesmi455/todo_list:latest")
-                                 
+                   dockerImage = docker.build("amalguesmi/todo_list:latest")
+                  
                 }
              }
                     
-          }   
+          }     
         /* stage('login') {
       steps {
       
