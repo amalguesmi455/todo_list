@@ -7,11 +7,7 @@ def dockerimage
 pipeline {
   agent any
   stages {
-    stage('verify version') {
-      steps {
-        sh 'python --version'
-      }
-    }
+   
    stage('Build image with docker') {
              steps{
                 script{
