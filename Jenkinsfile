@@ -37,13 +37,13 @@ pipeline {
              }
                     
           }   
-         stage('login') {
+        /* stage('login') {
       steps {
       
         
         
       }
-    }
+    }*/
  
     
    stage('Push image') {
