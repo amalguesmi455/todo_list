@@ -8,6 +8,11 @@ pipeline {
   agent any
   stages {
    
+     stage('version') {
+      steps {
+        sh 'python3 --version'
+      }
+   
      stage('Build image with docker') {
              steps{
                 script{
@@ -35,9 +40,12 @@ pipeline {
  
     
      // Start the tests
-    stage ('Test'){
-    sh 'python34 manage.py test --keepdb'
-
+      
+    }
+    stage('login') {
+      steps {
+        sh 'python3 'manage.py'
+      }
     }
    
    stage('Push image') {
