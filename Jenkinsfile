@@ -8,8 +8,6 @@ pipeline {
   agent any
   stages {
     
-
-   node {
     // Mark the code checkout 'stage'....
     stage 'Checkout'
 
