@@ -7,12 +7,17 @@ def dockerimage
 pipeline {
   agent any
   stages {
-    
-    // Mark the code checkout 'stage'....
-    stage 'Checkout'
-
-    // Get the code from a GitHub repository
-    git credentialsId: 'mycredentials', url: 'https://github.com/amalguesmi455/todo_list.git'
+  stage('Build image with docker') {
+             steps{
+                script{
+                   
+                   dockerImage = docker.build("amalguesmi/todo_list:latest")
+                  
+                }
+             }
+                    
+          }   
+      
 
     // Mark the code build 'stage'....
     stage 'Build'
@@ -51,4 +56,3 @@ sh ' docker login -u amalguesmi -p 22651530mama  '
                } 
                  }
                } 
-
