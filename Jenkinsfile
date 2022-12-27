@@ -12,7 +12,7 @@ pipeline {
              steps{
                 script{
                    
-                   dockerImage = docker.build("amalguesmi/todo_list:latest")
+                   dockerImage = docker.build("amalguesmi455/todo_list:latest")
                                  
                 }
              }
