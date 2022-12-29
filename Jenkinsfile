@@ -28,6 +28,7 @@ pipeline {
          stage('login') {
           steps {
       
+           sh 'cd app'
            sh 'python manage.py'
         
            }
