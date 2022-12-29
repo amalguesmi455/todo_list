@@ -12,7 +12,7 @@ pipeline {
          stage('verify version') {
       
              steps {
-              sh 'python --version'
+              sh 'python'
                }
          }
          stage('Build image with docker') {
