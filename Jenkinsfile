@@ -25,14 +25,7 @@ pipeline {
              }
                     
           }   
-         stage('login') {
-          steps {
-      
-          
-           sh 'python manage.py'
         
-           }
-         }
          stage('Push image') {
             steps{
                 script{
